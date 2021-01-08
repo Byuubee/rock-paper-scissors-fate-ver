@@ -10,8 +10,6 @@
 
 let playerScore=0;
 let computerScore=0;
-let computerChoice=computerPlay();
-let playerChoice=playerPLay();
 
 //score updates
 function updatePlayerScore(){
@@ -21,12 +19,6 @@ function updateComputerScore(){
     return computerScore++;
 }
 
-
-//take input from Player
-function playerPLay(){
-    let choice = prompt("Choose your servant!").toLowerCase();
-    return choice; 
-}
 
 //computer randomly chooses between saber archer or lancer
 function computerPlay(){
@@ -41,43 +33,64 @@ function computerPlay(){
         return "lancer";
     }
 }
-
+//function for playing one round
 function playRound(playerChoice, computerChoice){
+  
 //if its a tie
     if (playerChoice === computerChoice){
-                return "It's a tie! They're evenly matched!";
+                console.log("It's a tie! They're evenly matched!");
+                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
     }
 //if player is the winner
     else if ((playerChoice == "saber") && (computerChoice =="lancer")){
-                return "You win! Saber killed Lancer!";
+                console.log("You win! Saber killed Lancer!");
                 updatePlayerScore();
+                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
     }
     else if ((playerChoice == "lancer") && (computerChoice =="archer")){
-                return "You win! Lancer killed Archer!";
+                console.log("You win! Lancer killed Archer!");
                 updatePlayerScore();
+                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
     }
     else if((playerChoice == "archer") && (computerChoice == "saber")){
-                return "You win! Archer killed Saber!";
+                console.log("You win! Archer killed Saber!");
                 updatePlayerScore();
+                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
     }
     
 
 //if computer is the winner
     else if ((computerChoice =="saber") && (playerChoice =="lancer")){
-                return  "Argh.. Computer Won! Saber killed Lancer!";
+                console.log("Argh.. Computer Won! Saber killed Lancer!");
                 updateComputerScore();
+                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
              }
     else if ((computerChoice =="lancer") && (playerChoice =="archer")){
-                return  "Argh.. Computer Won! Lancer killed Archer!";
+                console.log("Argh.. Computer Won! Lancer killed Archer!");
                 updateComputerScore();
+                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
              }
     else if((computerChoice =="archer") && (playerChoice =="saber")){
-                return  "Argh.. Computer Won! Archer killed Saber!";
+                console.log("Argh.. Computer Won! Archer killed Saber!");
                 updateComputerScore();
+                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
              }
+    else{
+                return "Something seems wrong.. Please try again.";
+    }
 
 }
-console.log(playRound(playerChoice,computerChoice));
+function game(){
+    for(let i=0;i<5;i++){
+    //take input from player
+        let playerChoice = prompt("Choose your servant!").toLowerCase();
+        playRound(playerChoice,computerPlay());
+    }
+}
+game();
+
+
+
 </script>
 </body>
 
