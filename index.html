@@ -61,17 +61,17 @@ function playRound(playerChoice, computerChoice){
 
 //if computer is the winner
     else if ((computerChoice =="saber") && (playerChoice =="lancer")){
-                console.log("Argh.. Computer Won! Saber killed Lancer!");
+                console.log("Argh.. Computer Wins! Saber killed Lancer!");
                 updateComputerScore();
                 console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
              }
     else if ((computerChoice =="lancer") && (playerChoice =="archer")){
-                console.log("Argh.. Computer Won! Lancer killed Archer!");
+                console.log("Argh.. Computer Wins! Lancer killed Archer!");
                 updateComputerScore();
                 console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
              }
     else if((computerChoice =="archer") && (playerChoice =="saber")){
-                console.log("Argh.. Computer Won! Archer killed Saber!");
+                console.log("Argh.. Computer Wins! Archer killed Saber!");
                 updateComputerScore();
                 console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
              }
@@ -88,7 +88,13 @@ function game(){
     }
 }
 game();
+if(playerScore>computerScore){
+    console.log('Congrats! You obtained the Holy Grail!')
 
+}
+else if (playerScore<computerScore){
+    console.log('You Died.')
+}
 
 
 </script>
