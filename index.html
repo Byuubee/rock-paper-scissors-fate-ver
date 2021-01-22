@@ -3,101 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saber, Archer, Lancer!</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>Game | Saber, Archer, Lancer!</title>
 </head>
-<body> 
-    <script>
+<body>
+    <header>
+        <h1>Saber, Archer, Lancer!</h1>
+    </header>
+    <div class="container">
+        <div class="instructions">
+            <p>The fate of humanity is in your hands. Command your servant to battle against the computer and 
+                win the Holy Grail War! </p>
+            <p>Remember: Sabers beat Lancers, Lancers beat Archers, and Archers beat Sabers. Good Luck.</p>
+        </div>
 
-let playerScore=0;
-let computerScore=0;
+        <div class="scoreboard">
+            <p>Score</p>
+            <span id="player-score">0</span>:<span id="computer-score">0</span>
+        </div>
+        
+        <div class="player-choices-container">
+            <div class="player-choice" id="player-saber-servant">
+                <img src="images/saber.png" alt="saber-image">
+            </div>
+            <div class="player-choice" id="player-archer-servant">
+                <img src="images/archer.png" alt="archer-image">
+            </div>
+            <div class="player-choice" id="player-lancer-servant">
+                <img src="images/lancer.png" alt="lancer-image">
+            </div>
+        </div>
 
-//score updates
-function updatePlayerScore(){
-    return playerScore++;
-}
-function updateComputerScore(){
-    return computerScore++;
-}
+        <div class="action-message">Choose your Servant!</div>
 
+         <div id="result-container">
+            <h2 id="result-text">Results</h2>
+        </div>
 
-//computer randomly chooses between saber archer or lancer
-function computerPlay(){
-    let result= Math.floor(Math.random()*3)+1;
-    if(result==1){
-        return "saber";   
-    }
-    else if (result==2){
-        return "archer";
-    }
-    else{
-        return "lancer";
-    }
-}
-//function for playing one round
-function playRound(playerChoice, computerChoice){
-  
-//if its a tie
-    if (playerChoice === computerChoice){
-                console.log("It's a tie! They're evenly matched!");
-                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
-    }
-//if player is the winner
-    else if ((playerChoice == "saber") && (computerChoice =="lancer")){
-                console.log("You win! Saber killed Lancer!");
-                updatePlayerScore();
-                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
-    }
-    else if ((playerChoice == "lancer") && (computerChoice =="archer")){
-                console.log("You win! Lancer killed Archer!");
-                updatePlayerScore();
-                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
-    }
-    else if((playerChoice == "archer") && (computerChoice == "saber")){
-                console.log("You win! Archer killed Saber!");
-                updatePlayerScore();
-                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
-    }
-    
-
-//if computer is the winner
-    else if ((computerChoice =="saber") && (playerChoice =="lancer")){
-                console.log("Argh.. Computer Wins! Saber killed Lancer!");
-                updateComputerScore();
-                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
-             }
-    else if ((computerChoice =="lancer") && (playerChoice =="archer")){
-                console.log("Argh.. Computer Wins! Lancer killed Archer!");
-                updateComputerScore();
-                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
-             }
-    else if((computerChoice =="archer") && (playerChoice =="saber")){
-                console.log("Argh.. Computer Wins! Archer killed Saber!");
-                updateComputerScore();
-                console.log(`Current Score: You-${playerScore} Computer-${computerScore}`);
-             }
-    else{
-                return "Something seems wrong.. Please try again.";
-    }
-
-}
-function game(){
-    for(let i=0;i<5;i++){
-    //take input from player
-        let playerChoice = prompt("Choose your servant!").toLowerCase();
-        playRound(playerChoice,computerPlay());
-    }
-}
-game();
-if(playerScore>computerScore){
-    console.log('Congrats! You obtained the Holy Grail!')
-
-}
-else if (playerScore<computerScore){
-    console.log('You Died.')
-}
-
-
-</script>
+    </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
