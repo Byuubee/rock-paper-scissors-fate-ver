@@ -3,6 +3,9 @@ const computerScoreContainer = document.getElementById('computer-score');
 const saberBtn = document.getElementById('player-saber-servant');
 const lancerBtn = document.getElementById('player-lancer-servant');
 const archerBtn = document.getElementById('player-archer-servant');
+const compSaberBtn = document.getElementById('computer-saber-servant');
+const compLancerBtn = document.getElementById('computer-lancer-servant');
+const compArcherBtn = document.getElementById('computer-archer-servant');
 const resultDiv = document.getElementById('result-container');
 const resultText = document.getElementById('result-text');
 
@@ -22,15 +25,23 @@ function updateComputerScore(){
 
 //listen for player choice
 saberBtn.addEventListener('click', function(e){
-        if (playerScore >= 5 || computerScore >= 5) return;
-        return playRound('Saber',getComputerChoice());
-});
+    if (playerScore >= 5 || computerScore >= 5) return;
+    removeAllBorders();
+    saberBtn.classList.add('clicked');
+    return playRound('Saber',getComputerChoice());
+        
+})
 archerBtn.addEventListener('click', function(e){
     if (playerScore >= 5 || computerScore >= 5) return;
+    removeAllBorders();
+    archerBtn.classList.add('clicked');
     return playRound('Archer',getComputerChoice());
+
 });
 lancerBtn.addEventListener('click', function(e){
     if (playerScore >= 5 || computerScore >= 5) return;
+    removeAllBorders();
+    lancerBtn.classList.add('clicked');
     return playRound('Lancer',getComputerChoice());
 });
 
@@ -39,12 +50,18 @@ lancerBtn.addEventListener('click', function(e){
 function getComputerChoice(){
     let result= Math.floor(Math.random()*3)+1;
     if(result==1){
+        removeCompBorders();
+        compSaberBtn.classList.add('clicked');
         return "Saber";   
     }
     else if (result==2){
+        removeCompBorders();
+        compArcherBtn.classList.add('clicked');
         return "Archer";
     }
     else{
+        removeCompBorders();
+        compLancerBtn.classList.add('clicked');
         return "Lancer";
     }
 }
@@ -77,10 +94,6 @@ function playRound(playerChoice, computerChoice){
              }
     }
 
-// function convertChoice(){
-
-
-// }
 
 function win(playerChoice,  computerChoice ){
     updatePlayerScore();
@@ -115,9 +128,31 @@ function checkWinner(){
     }
     if (computerScore >= 5){
         const para = document.createElement('p');
-        para.classList = 'result-item-winner';
+        para.classList = 'result-item-loser';
         para.appendChild(document.createTextNode("You died. Computer wins the Holy Grail War."));
         resultText.after(para);
     }
 }
+
+//animations
+function removeAllBorders(){
+    const playerChoices = document.getElementsByClassName('player-choice');
+    const compChoices = document.getElementsByClassName('computer-choice');
+
+    for(let i=0; i< playerChoices.length;i++){
+        playerChoices[i].classList.remove('clicked');
+    }
+    for(let i=0; i< compChoices.length;i++){
+        compChoices[i].classList.remove('clicked');
+    }
+    
+}
+function removeCompBorders(){
+    const compChoices = document.getElementsByClassName('computer-choice');
+    for(let i=0; i< compChoices.length;i++){
+        compChoices[i].classList.remove('clicked');
+    }
+
+}
+
 
