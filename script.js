@@ -6,7 +6,7 @@ const archerBtn = document.getElementById('player-archer-servant');
 const compSaberBtn = document.getElementById('computer-saber-servant');
 const compLancerBtn = document.getElementById('computer-lancer-servant');
 const compArcherBtn = document.getElementById('computer-archer-servant');
-const resultDiv = document.getElementById('result-container');
+const scoreboardDiv = document.getElementById('scoreboard');
 const resultText = document.getElementById('result-text');
 
 //score updates
@@ -94,7 +94,7 @@ function playRound(playerChoice, computerChoice){
              }
     }
 
-
+//helper functions
 function win(playerChoice,  computerChoice ){
     updatePlayerScore();
     const para = document.createElement('p');
@@ -125,13 +125,32 @@ function checkWinner(){
         para.classList = 'result-item-winner';
         para.appendChild(document.createTextNode("Congratulations! You obtained the Holy Grail!"));
         resultText.after(para);
+
+        const playAgainBtn = document.createElement('div');
+        playAgainBtn.classList = 'play-again';
+        playAgainBtn.appendChild(document.createTextNode('PLAY AGAIN'));
+        scoreboardDiv.after(playAgainBtn);
+        
+        playAgainBtn.addEventListener('click', reloadPage);
+
     }
     if (computerScore >= 5){
         const para = document.createElement('p');
         para.classList = 'result-item-loser';
         para.appendChild(document.createTextNode("You died. Computer wins the Holy Grail War."));
         resultText.after(para);
+
+        const playAgainBtn = document.createElement('div');
+        playAgainBtn.classList = 'play-again';
+        playAgainBtn.innerHTML= 'PLAY AGAIN';
+        scoreboardDiv.after(playAgainBtn);
+
+        playAgainBtn.addEventListener('click', reloadPage);
     }
+}
+
+function reloadPage(){
+    window.location.reload(true);
 }
 
 //animations
