@@ -10,52 +10,56 @@
     <header>
         <h1>Saber, Archer, Lancer!</h1>
     </header>
-    <div class="container">
+    
         <div class="instructions">
             <p>The fate of humanity is in your hands. Command your servant to battle against 
                 <br>the computer and win the Holy Grail War! </p>
             <p>Remember: Sabers beat Lancers, Lancers beat Archers, and Archers beat Sabers.</p>
         </div>
 
-        <div class="scoreboard">
-            <p>Score</p>
-            <span id="player-score">0</span>:<span id="computer-score">0</span>
+        
+    <div class="main">
+        <div class='choices-container'>
+            <div class="player-choices-container">
+                <div class="player-choice" id="player-saber-servant">
+                    <img src="images/saber.png" alt="saber-image">
+                </div>
+                <div class="player-choice" id="player-archer-servant">
+                    <img src="images/archer.png" alt="archer-image">
+                </div>
+                <div class="player-choice" id="player-lancer-servant">
+                    <img src="images/lancer.png" alt="lancer-image">
+                </div>
+                <p>PLAYER</p>
+            </div>
+            <div class="action-message">Choose your Servant!</div>
+            <div class="computer-choices-container">
+                <div class="computer-choice" id="computer-saber-servant">
+                    <img src="images/saber.png" alt="saber-image">
+                </div>
+                <div class="computer-choice" id="computer-archer-servant">
+                    <img src="images/archer.png" alt="archer-image">
+                </div>
+                <div class="computer-choice" id="computer-lancer-servant">
+                    <img src="images/lancer.png" alt="lancer-image">
+                </div>
+                <p>COMPUTER</p>
+            </div>
         </div>
 
-    <div class='choices-container'>
-        <div class="player-choices-container">
-            <div class="player-choice" id="player-saber-servant">
-                <img src="images/saber.png" alt="saber-image">
+        <div class="container cont2">
+            <div id="scoreboard">
+                <p>Score</p>
+                <span id="player-score">0</span>:<span id="computer-score">0</span>
             </div>
-            <div class="player-choice" id="player-archer-servant">
-                <img src="images/archer.png" alt="archer-image">
-            </div>
-            <div class="player-choice" id="player-lancer-servant">
-                <img src="images/lancer.png" alt="lancer-image">
-            </div>
-            <p>PLAYER</p>
-        </div>
-        <div class="computer-choices-container">
-            <div class="computer-choice" id="computer-saber-servant">
-                <img src="images/saber.png" alt="saber-image">
-            </div>
-            <div class="computer-choice" id="computer-archer-servant">
-                <img src="images/archer.png" alt="archer-image">
-            </div>
-            <div class="computer-choice" id="computer-lancer-servant">
-                <img src="images/lancer.png" alt="lancer-image">
-            </div>
-            <p>COMPUTER</p>
-        </div>
-    </div>
 
-        <div class="action-message">Choose your Servant!</div>
-
-         <div id="result-container">
-            <h2 id="result-text">Results</h2>
+            <div id="result-container">
+                <h2 id="result-text">Results</h2>
+            </div>
         </div>
+            
 
-    </div>
+        </div>
     <script src="script.js"></script>
 </body>
 
